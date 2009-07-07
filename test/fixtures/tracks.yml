@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  performer: MyString
+  title: MyString
+  minutes: 1
+  seconds: 1
+  frames: 1
+
+two:
+  performer: MyString
+  title: MyString
+  minutes: 1
+  seconds: 1
+  frames: 1

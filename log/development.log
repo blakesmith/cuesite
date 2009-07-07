@@ -1,0 +1,185 @@
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2009-07-06 23:43:27) [GET]
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed in 57ms (View: 7, DB: 0) | 200 OK [http://localhost/rails/info/properties]
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (113.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (116.2ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTracks (20090707044747)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (63.5ms)[0m   [0;1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (124.6ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTracks (20090707044928)
+  [4;36;1mSQL (38.5ms)[0m   [0;1mCREATE TABLE `tracks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `performer` varchar(255), `title` varchar(255), `minutes` int(11), `seconds` int(11), `frames` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (24.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090707044928')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `tracks`[0m
+  [4;36;1mSQL (11.2ms)[0m   [0;1mdescribe `tracks`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `tracks`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateTracks (20090707044928)
+Migrating to CreateCuesheets (20090707045617)
+  [4;35;1mSQL (60.2ms)[0m   [0mCREATE TABLE `cuesheets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `performer` varchar(255), `title` varchar(255), `file` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (20.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090707045617')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `cuesheets`[0m
+  [4;35;1mSQL (10.4ms)[0m   [0mdescribe `cuesheets`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `cuesheets`[0m
+  [4;35;1mSQL (8.0ms)[0m   [0mSHOW FIELDS FROM `tracks`[0m
+  [4;36;1mSQL (8.2ms)[0m   [0;1mdescribe `tracks`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `tracks`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (113.1ms)[0m   [0mCREATE TABLE "cuesheets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "performer" varchar(255), "title" varchar(255), "file" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (131.0ms)[0m   [0mCREATE TABLE "tracks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "performer" varchar(255), "title" varchar(255), "minutes" integer, "seconds" integer, "frames" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (132.2ms)[0m   [0mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;36;1mSQL (133.7ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (131.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090707045617')[0m
+  [4;36;1mSQL (132.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707044928')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (132.8ms)[0m   [0mCREATE TABLE "cuesheets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "performer" varchar(255), "title" varchar(255), "file" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (114.4ms)[0m   [0mCREATE TABLE "tracks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "performer" varchar(255), "title" varchar(255), "minutes" integer, "seconds" integer, "frames" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (123.9ms)[0m   [0mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;36;1mSQL (107.9ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (107.2ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090707045617')[0m
+  [4;36;1mSQL (107.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707044928')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `cuesheets`[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mdescribe `cuesheets`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `cuesheets`[0m
+  [4;35;1mSQL (7.9ms)[0m   [0mSHOW FIELDS FROM `tracks`[0m
+  [4;36;1mSQL (8.2ms)[0m   [0;1mdescribe `tracks`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `tracks`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateTracks (20090707044928)
+Migrating to CreateCuesheets (20090707045617)
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `cuesheets`[0m
+  [4;35;1mSQL (18.8ms)[0m   [0mdescribe `cuesheets`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `cuesheets`[0m
+  [4;35;1mSQL (7.9ms)[0m   [0mSHOW FIELDS FROM `tracks`[0m
+  [4;36;1mSQL (8.3ms)[0m   [0;1mdescribe `tracks`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `tracks`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateTracks (20090707044928)
+Migrating to CreateCuesheets (20090707045617)
+Migrating to AddFkCuesheet (20090707050641)
+  [4;35;1mSQL (144.7ms)[0m   [0mALTER TABLE `tracks` ADD `cuesheet_id` int(11)[0m
+  [4;36;1mSQL (29.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090707050641')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `cuesheets`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mdescribe `cuesheets`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `cuesheets`[0m
+  [4;35;1mSQL (8.0ms)[0m   [0mSHOW FIELDS FROM `tracks`[0m
+  [4;36;1mSQL (8.1ms)[0m   [0;1mdescribe `tracks`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `tracks`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `cuesheets`[0m
+  [4;35;1mSQL (20.2ms)[0m   [0mdescribe `cuesheets`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `cuesheets`[0m
+  [4;35;1mSQL (7.9ms)[0m   [0mSHOW FIELDS FROM `tracks`[0m
+  [4;36;1mSQL (8.2ms)[0m   [0;1mdescribe `tracks`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `tracks`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (141.4ms)[0m   [0mCREATE TABLE "cuesheets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "performer" varchar(255), "title" varchar(255), "file" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (130.9ms)[0m   [0mCREATE TABLE "tracks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "performer" varchar(255), "title" varchar(255), "minutes" integer, "seconds" integer, "frames" integer, "created_at" datetime, "updated_at" datetime, "cuesheet_id" integer) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (132.1ms)[0m   [0mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;36;1mSQL (132.8ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (132.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090707050641')[0m
+  [4;36;1mSQL (141.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20090707044928')[0m
+  [4;35;1mSQL (124.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20090707045617')[0m
