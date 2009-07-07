@@ -1,15 +1,15 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  performer: MyString
-  title: MyString
-  minutes: 1
-  seconds: 1
-  frames: 1
+  performer: Essential Mix
+  title: Intro
+  minutes: 0
+  seconds: 0
+  frames: 0
 
 two:
-  performer: MyString
-  title: MyString
+  performer: Marc Houle
+  title: Meatier Shower
   minutes: 1
-  seconds: 1
-  frames: 1
+  seconds: 41
+  frames: 13

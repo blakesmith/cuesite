@@ -1,9 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  performer: MyString
-  title: MyString
-  file: MyString
+steve_mac:
+  performer: Steve Mac
+  title: Essential Mix (2008-10-25) [TMB] 
+  file: Essential Mix - 2008-10-25 - Steve Mac.mp3
 
 two:
   performer: MyString
