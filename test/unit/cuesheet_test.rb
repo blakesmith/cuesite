@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class CuesheetTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  fixtures :cuesheets
+
+  should 'load fixtures' do
+    cuesheet = cuesheets(:steve_mac)
+    assert cuesheet
+    assert_equal cuesheet.performer, 'Steve Mac'
+    assert_equal cuesheet.title, 'Essential Mix (2008-10-25) [TMB]'
   end
+
 end
