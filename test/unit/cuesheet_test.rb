@@ -10,4 +10,9 @@ class CuesheetTest < ActiveSupport::TestCase
     assert_equal cuesheet.title, 'Essential Mix (2008-10-25) [TMB]'
   end
 
+  should 'load fixture replacement' do
+    cuesheet = create_cuesheet
+    assert cuesheet
+  end
+
 end

@@ -10,4 +10,9 @@ class TrackTest < ActiveSupport::TestCase
     assert_equal track.performer, 'Essential Mix'
   end
 
+  should 'load fixture replacement' do
+    track = create_track
+    assert track
+  end
+
 end
