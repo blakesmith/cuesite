@@ -15,4 +15,24 @@ class CuesheetTest < ActiveSupport::TestCase
     assert cuesheet
   end
 
+  should 'load from file' do
+    cue = Cuesheet.new
+    assert_nothing_raised do
+      cue.load_from_file('test/fixtures/test.cue')
+    end
+  end
+
+  context 'load from file' do
+    setup do
+      @cue = Cuesheet.new
+      @cue.load_from_file('test/fixtures/test.cue')
+    end
+
+    should 'regex match track index' do
+      @cue.parse_indices
+      assert_equal 35, @cue.indices.size
+    end
+
+  end
+
 end
