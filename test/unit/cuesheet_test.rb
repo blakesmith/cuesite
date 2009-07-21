@@ -41,15 +41,25 @@ class CuesheetTest < ActiveSupport::TestCase
     should 'regex match performer' do
       @cue.parse_performers
       assert_equal 35, @cue.performers.size
-      assert_equal 1, @cue.cue_performer.size
+      assert_equal "Steve Mac", @cue.cue_performer
     end
 
     should 'regex match titles' do
       @cue.parse_titles
       assert_equal 35, @cue.titles.size
-      assert_equal 1, @cue.cue_title.size
+      assert_equal "Essential Mix (2008-10-25) [TMB]", @cue.cue_title
     end
 
   end
+    
+  should 'return list of hashes for cuesheet data' do
+    @cue = create_cuesheet
+    sheet = @cue.parse_cue_file('test/fixtures/test.cue')
+    test_hash = {:performer => "Essential Mix", :title => "Intro", :index => [0, 0, 0], :track => 1}
+    test_hash2 = {:performer => "Marc Houle", :title => "Meatier Shower", :index => [1, 41, 13], :track => 2}
+    assert_equal test_hash, sheet[0]
+    assert_equal test_hash2, sheet[1]
+  end
+
 
 end
