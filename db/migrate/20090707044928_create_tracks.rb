@@ -1,11 +1,11 @@
 class CreateTracks < ActiveRecord::Migration
   def self.up
     create_table :tracks do |t|
-      t.string :performer
-      t.string :title
       t.integer :minutes
       t.integer :seconds
       t.integer :frames
+      t.integer :song_id
+      t.integer :cuesheet_id
 
       t.timestamps
     end

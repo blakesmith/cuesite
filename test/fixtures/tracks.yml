@@ -1,15 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  performer: Essential Mix
-  title: Intro
   minutes: 0
   seconds: 0
   frames: 0
 
 two:
-  performer: Marc Houle
-  title: Meatier Shower
   minutes: 1
   seconds: 41
   frames: 13

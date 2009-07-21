@@ -6,13 +6,14 @@ class TrackTest < ActiveSupport::TestCase
   should 'load fixtures' do
     track = tracks(:one)
     assert track
-    assert_equal track.title, 'Intro'
-    assert_equal track.performer, 'Essential Mix'
+    assert_equal track.minutes, 0
   end
 
   should 'load fixture replacement' do
     track = create_track
-    assert track
+    cuesheet = create_cuesheet
+    assert_equal 1, track.minutes
+    assert_equal 41, track.seconds
   end
 
 end
