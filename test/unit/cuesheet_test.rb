@@ -28,9 +28,26 @@ class CuesheetTest < ActiveSupport::TestCase
       @cue.load_from_file('test/fixtures/test.cue')
     end
 
+    should 'regex match track number' do
+      @cue.parse_track_numbers
+      assert_equal 35, @cue.track_numbers.size
+    end
+
     should 'regex match track index' do
       @cue.parse_indices
       assert_equal 35, @cue.indices.size
+    end
+
+    should 'regex match performer' do
+      @cue.parse_performers
+      assert_equal 35, @cue.performers.size
+      assert_equal 1, @cue.cue_performer.size
+    end
+
+    should 'regex match titles' do
+      @cue.parse_titles
+      assert_equal 35, @cue.titles.size
+      assert_equal 1, @cue.cue_title.size
     end
 
   end
