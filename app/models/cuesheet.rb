@@ -3,8 +3,6 @@ class Cuesheet < ActiveRecord::Base
 
   validates_presence_of :performer, :title, :file
 
-  attr_accessor :indices, :performers, :cue_performer, :cue_title, :titles, :track_numbers
-
   def self.load_from_file(file)
     parsed = parse_cue_file(file)
     cue = Cuesheet.create(:performer => parsed[:cuesheet][:performer], :title => parsed[:cuesheet][:title], :file => file.split('/').last)
