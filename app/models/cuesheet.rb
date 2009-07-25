@@ -3,14 +3,14 @@ class Cuesheet < ActiveRecord::Base
 
   validates_presence_of :performer, :title, :file
 
-  attr_accessor :file, :indices, :performers, :cue_performer, :cue_title, :titles, :track_numbers
+  attr_accessor :indices, :performers, :cue_performer, :cue_title, :titles, :track_numbers
 
   def self.load_from_file(file)
     parsed = parse_cue_file(file)
-    cue = Cuesheet.create(:cue_performer => parsed[:cue_performer], :cue_title => parsed[:cue_title])
-    parsed.each do |track|
+    cue = Cuesheet.create(:performer => parsed[:cuesheet][:performer], :title => parsed[:cuesheet][:title], :file => file.split('/').last)
+    parsed[:tracks].each do |track|
       song = Song.find_or_create_by_performer_and_title_and_remix(:performer => track[:performer], :title => track[:title], :remix => track[:remix])
-      track = Track.create(:cuesheet => cue, :song => song, :minutes => parsed[:minutes], :seconds => parsed[:seconds], :frames => parsed[:frames])
+      new_track = Track.create(:cuesheet => cue, :song => song, :minutes => track[:index][0], :seconds => track[:index][1], :frames => track[:index][2])
     end
   end
 

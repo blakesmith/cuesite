@@ -1,14 +1,6 @@
 require 'test_helper'
 
 class CuesheetTest < ActiveSupport::TestCase
-  fixtures :cuesheets
-
-  should 'load fixtures' do
-    cuesheet = cuesheets(:steve_mac)
-    assert cuesheet
-    assert_equal cuesheet.performer, 'Steve Mac'
-    assert_equal cuesheet.title, 'Essential Mix (2008-10-25) [TMB]'
-  end
 
   should 'load fixture replacement' do
     cuesheet = create_cuesheet
@@ -21,7 +13,7 @@ class CuesheetTest < ActiveSupport::TestCase
       @sheet = Cuesheet.parse_cue_file('test/fixtures/test.cue')
     end
 
-    should 'return overall performer and title' do
+    should 'return overall performer and title and file' do
       test_hash = {:performer => 'Steve Mac', :title => 'Essential Mix (2008-10-25) [TMB]'}
       assert_equal(test_hash, @sheet[:cuesheet])
     end
@@ -43,13 +35,15 @@ class CuesheetTest < ActiveSupport::TestCase
 
  end
 
-#  should 'load cuesheet into database' do
-#    Cuesheet.load_from_file('test/fixtures/test.cue')
-#    @cuesheet = find_by_performer('Steve Mac')
-#    assert @cuesheet
-#    assert_equal('Steve Mac', @cuesheet.performer)
-#    assert_equal('Intro', @cuesheet.songs[0])
-#    assert_equal(0, @cuesheet.tracks[0].minutes)
-#  end
-#
+  should 'load cuesheet into database' do
+    Cuesheet.load_from_file('test/fixtures/test.cue')
+    @cuesheet = Cuesheet.find_by_file('test.cue')
+    assert @cuesheet
+    assert_equal('Steve Mac', @cuesheet.performer)
+    assert_equal('Essential Mix (2008-10-25) [TMB]', @cuesheet.title)
+    assert_equal('test.cue', @cuesheet.file)
+    assert_equal('Intro', @cuesheet.tracks[0].song.title)
+    assert_equal(0, @cuesheet.tracks[0].minutes)
+  end
+
 end
