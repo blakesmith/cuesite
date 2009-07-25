@@ -14,7 +14,7 @@ class CuesheetTest < ActiveSupport::TestCase
     end
 
     should 'return overall performer and title and file' do
-      test_hash = {:performer => 'Steve Mac', :title => 'Essential Mix (2008-10-25) [TMB]'}
+      test_hash = {:performer => 'Steve Mac', :title => 'Essential Mix (2008-10-25) [TMB]', :file => 'Essential Mix - 2008-10-25 - Steve Mac.mp3'}
       assert_equal(test_hash, @sheet[:cuesheet])
     end
     
@@ -37,11 +37,12 @@ class CuesheetTest < ActiveSupport::TestCase
 
   should 'load cuesheet into database' do
     Cuesheet.load_from_file('test/fixtures/test.cue')
-    @cuesheet = Cuesheet.find_by_file('test.cue')
+    @cuesheet = Cuesheet.find_by_cue_file('test.cue')
     assert @cuesheet
     assert_equal('Steve Mac', @cuesheet.performer)
     assert_equal('Essential Mix (2008-10-25) [TMB]', @cuesheet.title)
-    assert_equal('test.cue', @cuesheet.file)
+    assert_equal('test.cue', @cuesheet.cue_file)
+    assert_equal('Essential Mix - 2008-10-25 - Steve Mac.mp3', @cuesheet.file)
     assert_equal('Intro', @cuesheet.tracks[0].song.title)
     assert_equal('Surkin', @cuesheet.tracks[34].song.performer)
     assert_equal('White Knight Two (Mac Re Edit)', @cuesheet.tracks[34].song.title)
