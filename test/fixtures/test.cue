@@ -48,7 +48,7 @@ FILE "Essential Mix - 2008-10-25 - Steve Mac.mp3" MP3
  TRACK 12 AUDIO
    PERFORMER "Ricardo Villalobos"
    TITLE "Enfants"
-   INDEX 01 33:16:19 
+   INDEX 01 33:16:19
  TRACK 13 AUDIO
    PERFORMER "Radio Slave"
    TITLE "Unknown"
@@ -64,7 +64,7 @@ FILE "Essential Mix - 2008-10-25 - Steve Mac.mp3" MP3
  TRACK 16 AUDIO
    PERFORMER "Cirez D"
    TITLE "Teaser (Deadmau 5 Mix)"
-   INDEX 01 42:25:08 
+   INDEX 01 42:25:08
  TRACK 17 AUDIO
    PERFORMER "Dubfire"
    TITLE "Diosa (Mac Exclusive Re Edit)"

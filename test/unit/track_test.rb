@@ -16,4 +16,14 @@ class TrackTest < ActiveSupport::TestCase
     assert_equal 41, track.seconds
   end
 
+  should 'add zeros if under 10' do
+    track = create_track
+    assert_equal('03', track.add_zeros(3))
+  end
+
+  should 'add zeros if over 10' do
+    track = create_track
+    assert_equal('13', track.add_zeros(13))
+  end
+
 end

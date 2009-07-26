@@ -18,6 +18,7 @@ module FixtureReplacement
     u.frames = 13,
     u.cuesheet = default_cuesheet
     u.song = default_song
+    u.track_num = 4
   end 
 
 

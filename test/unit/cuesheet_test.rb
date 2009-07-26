@@ -44,17 +44,18 @@ class CuesheetTest < ActiveSupport::TestCase
     assert_equal('test.cue', @cuesheet.cue_file)
     assert_equal('Essential Mix - 2008-10-25 - Steve Mac.mp3', @cuesheet.file)
     assert_equal('Intro', @cuesheet.tracks[0].song.title)
+    assert_equal(1, @cuesheet.tracks[0].track_num)
     assert_equal('Surkin', @cuesheet.tracks[34].song.performer)
     assert_equal('White Knight Two (Mac Re Edit)', @cuesheet.tracks[34].song.title)
     assert_equal(0, @cuesheet.tracks[0].minutes)
   end
 
- # should 'cuesheet to file from database with songs' do
- #   file = 'test/fixtures/test.cue'
- #   fixture = File.open(file).read
- #   Cuesheet.load_from_file('test/fixtures/test.cue')
- #   cue = Cuesheet.find_by_file('test.cue')
- #   assert_equal(fixture, cue.to_cuesheet)
- # end
+  should 'cuesheet to file from database with songs' do
+    file = 'test/fixtures/test.cue'
+    fixture = File.open(file).read
+    Cuesheet.load_from_file('test/fixtures/test.cue')
+    cue = Cuesheet.find_by_cue_file('test.cue')
+    assert_equal(fixture, cue.to_cuesheet)
+  end
 
 end
