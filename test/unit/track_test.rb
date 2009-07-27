@@ -26,4 +26,15 @@ class TrackTest < ActiveSupport::TestCase
     assert_equal('13', track.add_zeros(13))
   end
 
+  should 'return performer, title, and index for .to_cuesheet' do
+    cue = create_cuesheet
+    song = create_song(:performer => 'blithe', :title => 'resonance') 
+    track = create_track(:track_num => 25, :minutes => 5, :seconds => 30, :frames => 70, :cuesheet => cue, :song => song)
+    expected = "\sTRACK 25 AUDIO\n"
+    expected << "\s\s\sPERFORMER \"blithe\"\n"
+    expected << "\s\s\sTITLE \"resonance\"\n"
+    expected << "\s\s\sINDEX 01 05:30:70\n"
+    assert_equal(expected, track.to_cuesheet)
+  end
+
 end

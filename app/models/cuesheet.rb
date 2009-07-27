@@ -46,10 +46,7 @@ class Cuesheet < ActiveRecord::Base
     cue << "TITLE \"#{title}\"\n"
     cue << "FILE \"#{file}\" #{file.split('.').last.upcase}\n"
     tracks.each do |track|
-      cue << "\sTRACK #{track.add_zeros(track.track_num)} AUDIO\n"
-      cue << "\s\s\sPERFORMER \"#{track.song.performer}\"\n"
-      cue << "\s\s\sTITLE \"#{track.song.title}\"\n"
-      cue << "\s\s\sINDEX 01 #{track.add_zeros(track.minutes)}:#{track.add_zeros(track.seconds)}:#{track.add_zeros(track.frames)}\n"
+      cue << track.to_cuesheet
     end
     cue
   end
