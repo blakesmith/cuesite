@@ -50,12 +50,19 @@ class CuesheetTest < ActiveSupport::TestCase
     assert_equal(0, @cuesheet.tracks[0].minutes)
   end
 
-  should 'cuesheet to file from database with songs' do
-    file = 'test/fixtures/test.cue'
-    fixture = File.open(file).read
-    Cuesheet.load_from_file('test/fixtures/test.cue')
-    cue = Cuesheet.find_by_cue_file('test.cue')
-    assert_equal(fixture, cue.to_cuesheet)
+  context 'cuesheet from file' do
+
+    setup do
+      @cue = Cuesheet.load_from_file('test/fixtures/test.cue')
+    end
+
+    should 'cuesheet to file from database with songs' do
+      file = 'test/fixtures/test.cue'
+      fixture = File.open(file).read
+      cue = Cuesheet.find_by_cue_file('test.cue')
+      assert_equal(fixture, cue.to_cuesheet)
+    end
+
   end
 
 end
