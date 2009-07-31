@@ -37,4 +37,33 @@ class TrackTest < ActiveSupport::TestCase
     assert_equal(expected, track.to_cuesheet)
   end
 
+  should 'index from minutes, seconds, frames' do
+    track = create_track :minutes => 3, :seconds => 55, :frames => 65
+    assert_equal([3, 55, 65], track.index)
+  end
+
+  should 'total_seconds' do
+    track = create_track :minutes => 2, :seconds => 45, :frames => 60
+    assert_equal(165.8, track.total_seconds)
+  end
+
+  should 'calc track_diff no_wrap' do
+    track1 = create_track :minutes => 5, :seconds => 45, :frames => 60
+    track2 = create_track :minutes => 3, :seconds => 30, :frames => 45
+    assert_equal([2, 15, 15], track1.track_diff(track2))
+  end
+
+  should 'calc track_diff wrap' do
+    track1 = create_track :minutes => 5, :seconds => 45, :frames => 60
+    track2 = create_track :minutes => 3, :seconds => 50, :frames => 75
+    assert_equal([1, 54, 60], track1.track_diff(track2))
+  end
+
+  should 'calc track_diff negative result' do
+    track1 = create_track :minutes => 3, :seconds => 50, :frames => 75
+    track2 = create_track :minutes => 5, :seconds => 45, :frames => 60
+    result = track1.track_diff(track2)
+    assert result.is_a?(String)
+  end
+
 end
