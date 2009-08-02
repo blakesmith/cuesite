@@ -66,4 +66,13 @@ class TrackTest < ActiveSupport::TestCase
     assert result.is_a?(String)
   end
 
+  should 'calc track length wrap' do
+    cue = create_cuesheet
+    track1 = create_track :minutes => 3, :seconds => 50, :frames => 75, :cuesheet => cue,
+      :track_num => 1
+    track2 = create_track :minutes => 5, :seconds => 45, :frames => 60, :cuesheet => cue, 
+      :track_num => 2
+    assert_equal([1, 54, 60], track1.length)
+  end
+
 end

@@ -36,4 +36,8 @@ class Track < ActiveRecord::Base
     [min, sec, frm]
   end
 
+  def length
+    cuesheet.tracks[track_num].track_diff(self)
+  end
+
 end
