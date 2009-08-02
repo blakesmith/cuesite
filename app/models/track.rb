@@ -27,6 +27,7 @@ class Track < ActiveRecord::Base
   end
 
   def track_diff(other_track)
+    return 'none' if other_track.nil?
     diff = total_seconds - other_track.total_seconds
     return 'neg' if diff < 0
     min = (diff / 60).to_i
@@ -37,6 +38,7 @@ class Track < ActiveRecord::Base
   end
 
   def length
+    return 'none' if cuesheet.tracks[track_num].nil?
     cuesheet.tracks[track_num].track_diff(self)
   end
 
