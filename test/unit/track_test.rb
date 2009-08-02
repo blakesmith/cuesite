@@ -64,6 +64,7 @@ class TrackTest < ActiveSupport::TestCase
     track2 = create_track :minutes => 5, :seconds => 45, :frames => 60
     result = track1.track_diff(track2)
     assert result.is_a?(String)
+    assert_equal('neg', result)
   end
 
   context 'calc track length' do
