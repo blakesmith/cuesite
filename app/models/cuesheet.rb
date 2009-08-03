@@ -15,6 +15,7 @@ class Cuesheet < ActiveRecord::Base
       song = Song.find_or_create_by_performer_and_title_and_remix(:performer => track[:performer], :title => track[:title], :remix => track[:remix])
       new_track = Track.create(:cuesheet => cue, :song => song, :minutes => track[:index][0], :seconds => track[:index][1], :frames => track[:index][2], :track_num => track[:track])
     end
+    cue
   end
 
   def self.parse_cue_file(file)

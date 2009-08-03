@@ -81,6 +81,11 @@ class CuesheetTest < ActiveSupport::TestCase
       assert_equal(fixture, cue.to_cuesheet)
     end
 
+    should 'return the same song for track with the same information' do
+      @cue2 = Cuesheet.load_from_file('test/fixtures/test2.cue')
+      assert_equal(@cue.tracks[0].song, @cue2.tracks[0].song)
+    end
+
   end
 
 end
