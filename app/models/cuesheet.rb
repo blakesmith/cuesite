@@ -3,9 +3,14 @@ class Cuesheet < ActiveRecord::Base
 
   validates_presence_of :performer, :title, :file
 
-  def self.load_from_file(file)
+  def self.load_from_file(file, filename=nil)
     parsed = parse_cue_file(file)
-    cue = Cuesheet.create(:performer => parsed[:cuesheet][:performer], :title => parsed[:cuesheet][:title], :file => parsed[:cuesheet][:file], :cue_file => file.split('/').last)
+    if filename.nil?
+      cue_file = file.split('/').last 
+    else
+      cue_file = filename.split('/').last
+    end
+    cue = Cuesheet.create(:performer => parsed[:cuesheet][:performer], :title => parsed[:cuesheet][:title], :file => parsed[:cuesheet][:file], :cue_file => cue_file)
     parsed[:tracks].each do |track|
       song = Song.find_or_create_by_performer_and_title_and_remix(:performer => track[:performer], :title => track[:title], :remix => track[:remix])
       new_track = Track.create(:cuesheet => cue, :song => song, :minutes => track[:index][0], :seconds => track[:index][1], :frames => track[:index][2], :track_num => track[:track])
@@ -13,7 +18,11 @@ class Cuesheet < ActiveRecord::Base
   end
 
   def self.parse_cue_file(file)
-    f = File.open(file).read
+    if File.exists?(file)
+      f = File.open(file).read 
+    elsif file.is_a?(String)
+      f = file # The string for the file was passed in instead of the filename
+    end
 
     performers = f.scan(/PERFORMER \"(.*)\"/).collect {|performer| performer[0]}
     cue_performer = performers[0]

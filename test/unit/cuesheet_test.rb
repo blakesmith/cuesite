@@ -35,7 +35,16 @@ class CuesheetTest < ActiveSupport::TestCase
 
  end
 
-  should 'load cuesheet into database' do
+  should 'return list of hashes for cuesheet data from preloaded file (a string)' do
+    @sheet = File.open('test/fixtures/test.cue').read
+    @parsed = Cuesheet.parse_cue_file(@sheet)
+    test_hash = {:performer => "Essential Mix", :title => "Intro", :index => [0, 0, 0], :track => 1}
+    test_hash2 = {:performer => "Marc Houle", :title => "Meatier Shower", :index => [1, 41, 13], :track => 2}
+    assert_equal test_hash, @parsed[:tracks][0]
+    assert_equal test_hash2, @parsed[:tracks][1]
+  end
+
+  should 'load cuesheet into database as a file' do
     Cuesheet.load_from_file('test/fixtures/test.cue')
     @cuesheet = Cuesheet.find_by_cue_file('test.cue')
     assert @cuesheet
@@ -48,6 +57,15 @@ class CuesheetTest < ActiveSupport::TestCase
     assert_equal('Surkin', @cuesheet.tracks[34].song.performer)
     assert_equal('White Knight Two (Mac Re Edit)', @cuesheet.tracks[34].song.title)
     assert_equal(0, @cuesheet.tracks[0].minutes)
+  end
+
+  should 'load cuesheet into database as a string' do
+    file = 'test/fixtures/test.cue'
+    @sheet = File.open(file).read
+    Cuesheet.load_from_file(@sheet, file)
+    @cuesheet = Cuesheet.find_by_cue_file('test.cue')
+    assert @cuesheet
+    assert_equal(@cuesheet.cue_file, 'test.cue')
   end
 
   context 'cuesheet from file' do
