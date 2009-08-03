@@ -5,10 +5,8 @@ class CuesheetController < ApplicationController
   end
 
   def upload_cuesheet
-    cue = params[:cue_file]
-    File.open(Rails.root.join('public', 'uploads', cue.original_filename), 'w') do |file|
-      file.write(cue.read)
-    end
+    cue_file = params[:cue_file]
+    cue = Cuesheet.load_from_file(cue_file.read, cue_file.original_filename)
     render :text => 'Cuesheet successfully uploaded' if cue
   end
 
