@@ -1,0 +1,5 @@
+<% form_tag( {:action => :upload_cuesheet}, {:multipart => true} ) do %>
+  <%= label :cue_file, 'Upload a cue file' %>:
+  <%= file_field_tag 'cue_file' %>
+  <%= submit_tag 'Upload' %>
+<% end %>
