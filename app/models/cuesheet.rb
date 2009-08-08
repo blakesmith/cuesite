@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20090803065620
+#
+# Table name: cuesheets
+#
+#  id         :integer(4)      not null, primary key
+#  performer  :string(255)
+#  title      :string(255)
+#  file       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  cue_file   :string(255)
+#
+
 class Cuesheet < ActiveRecord::Base
   has_many :tracks
 
