@@ -4,10 +4,22 @@ class CuesheetController < ApplicationController
     @cuesheet = Cuesheet.new
   end
 
-  def upload_cuesheet
+  def create
     cue_file = params[:cue_file]
     cue = Cuesheet.load_from_file(cue_file.read, cue_file.original_filename)
-    render :text => 'Cuesheet successfully uploaded' if cue
+    if cue
+      flash[:notice] = 'Cuesheet successfully uploaded!'
+      redirect_to :action => :show, :id => cue.id
+    else
+      flash[:error] = 'Cuesheet failed to upload'
+      render :action => :new
+    end
+  end
+
+  def show
+    if params[:id]
+      @cuesheet = Cuesheet.find(params[:id])
+    end
   end
 
 end
