@@ -88,4 +88,13 @@ class TrackTest < ActiveSupport::TestCase
 
   end
 
+  should 'print_index' do
+    track = create_track :minutes => 3, :seconds => 30, :frames => 35
+    assert_equal('03:30', track.print_index)
+  end
+
+  should 'print_track_num' do
+    track = create_track :track_num => 3
+    assert_equal('03', track.print_track_num)
+  end
 end

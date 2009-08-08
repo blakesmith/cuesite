@@ -31,6 +31,15 @@ class Track < ActiveRecord::Base
     [minutes, seconds, frames]
   end
 
+  def print_index
+    i = index
+    "#{add_zeros(index[0])}:#{add_zeros(index[1])}"
+  end
+
+  def print_track_num
+    "#{add_zeros(track_num)}"
+  end
+
   def total_seconds
     (minutes * 60) + seconds + (frames / 75.0)
   end

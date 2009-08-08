@@ -1,1 +1,14 @@
-<%= @cuesheet.id %>
+Performer: <%= @cuesheet.performer %>
+<br />
+Title: <%= @cuesheet.title %>
+Tracklist:
+<br />
+<table id="tracklist">
+<% @cuesheet.tracks.each do |track| %>
+  <tr>
+    <td><%= track.print_index %></td>
+    <td><%= track.print_track_num %>.</td>
+    <td><%= track.song.performer %> - <%= track.song.title %></td>
+  </tr>
+<% end %>
+</table>
