@@ -1,5 +1,7 @@
 <%= link_to "Back to index", :action => 'index' %>
 <br />
+<%= link_to "Remove this cuesheet", @cuesheet, :method => :delete, :confirm => 'Are you sure?' %>
+<br />
 <br />
 Performer: <%= @cuesheet.performer %>
 <br />

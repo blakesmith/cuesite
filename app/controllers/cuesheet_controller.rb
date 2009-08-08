@@ -1,6 +1,11 @@
 class CuesheetController < ApplicationController
 
   def index
+    list
+    render :action => 'list'
+  end
+
+  def list
     @cuesheets = Cuesheet.all
   end
 
@@ -24,6 +29,16 @@ class CuesheetController < ApplicationController
     if params[:id]
       @cuesheet = Cuesheet.find(params[:id])
     end
+  end
+
+  def destroy
+    cuesheet = Cuesheet.find(params[:id])
+    if cuesheet.tracks.destroy_all && cuesheet.destroy
+      flash[:notice] = 'Cuesheet successfully removed!'
+    else
+      flash[:notice] = 'Cuesheet failed to remove.'
+    end
+    redirect_to :action => 'index'
   end
 
 end
