@@ -1,5 +1,9 @@
 class CuesheetController < ApplicationController
 
+  def index
+    @cuesheets = Cuesheet.all
+  end
+
   def new
     @cuesheet = Cuesheet.new
   end

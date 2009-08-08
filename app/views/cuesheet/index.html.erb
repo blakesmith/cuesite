@@ -1,0 +1,7 @@
+<%= link_to "Upload a cuesheet", :action => 'new' %>
+<br />
+<br />
+<% @cuesheets.each do |cuesheet| %>
+  <%= link_to "#{cuesheet.performer} - #{cuesheet.title}", cuesheet %>
+  <br />
+<% end %>

@@ -1,3 +1,6 @@
+<%= link_to "Back to index", :action => 'index' %>
+<br />
+<br />
 <% form_tag( {:action => :create}, {:multipart => true} ) do %>
   <%= label :cue_file, 'Upload a cue file' %>:
   <%= file_field_tag 'cue_file' %>
