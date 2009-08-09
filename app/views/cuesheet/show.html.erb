@@ -1,22 +1,21 @@
-<%= link_to "Back to index", :action => 'index' %>
-<br />
-<%= link_to "Download this cuesheet", {:action => 'export', :id => @cuesheet.id } %>
-<br />
-<%= link_to "Remove this cuesheet", @cuesheet, :method => :delete, :confirm => 'Are you sure?' %>
-<br />
-<br />
-Performer: <%= @cuesheet.performer %>
-<br />
-Title: <%= @cuesheet.title %>
-<br />
-Tracklist:
-<br />
-<table id="tracklist">
-<% @cuesheet.tracks.each do |track| %>
-  <tr>
-    <td><%= track.print_index %></td>
-    <td><%= track.print_track_num %>.</td>
-    <td><%= track.song.performer %> - <%= track.song.title %></td>
-  </tr>
-<% end %>
-</table>
+<fieldset>
+  <legend><%= @cuesheet.performer %> - <%= @cuesheet.title %></legend>
+  <%= link_to "Back to index", :action => 'index' %>
+  <br />
+  <%= link_to "Download this cuesheet", {:action => 'export', :id => @cuesheet.id } %>
+  <br />
+  <%= link_to "Remove this cuesheet", @cuesheet, :method => :delete, :confirm => 'Are you sure?' %>
+  <br />
+  <br />
+  Tracklist:
+  <br />
+  <table id="tracklist">
+  <% @cuesheet.tracks.each do |track| %>
+    <tr>
+      <td><%= track.print_index %></td>
+      <td><%= track.print_track_num %>.</td>
+      <td><%= track.song.performer %> - <%= track.song.title %></td>
+    </tr>
+  <% end %>
+  </table>
+</fieldset>
