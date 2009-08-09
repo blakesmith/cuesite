@@ -75,4 +75,18 @@ class Cuesheet < ActiveRecord::Base
     cue
   end
 
+  def delete
+    tracks.each do |track|
+      # No more cuesheet associated with this song
+      if Track.all(:conditions => {:song_id => track.song.id}).size == 1
+        track.song.destroy
+      end
+    end
+    if tracks.destroy_all && self.destroy
+      true
+    else
+      false
+    end
+  end
+
 end

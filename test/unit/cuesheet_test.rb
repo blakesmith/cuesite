@@ -86,6 +86,25 @@ class CuesheetTest < ActiveSupport::TestCase
       assert_equal(@cue.tracks[0].song, @cue2.tracks[0].song)
     end
 
+    should 'delete cuesheet with all tracks and songs' do
+      id = @cue.id
+      @cue.delete
+      assert_nil(Cuesheet.find_by_id(id))
+      assert_nil(Track.find_by_cuesheet_id(id))
+      song = Song.find_by_performer_and_title_and_remix('Essential Mix', 'Intro', nil)
+      assert_nil(song)
+    end
+
+    should 'delete not remove track' do
+      track = create_track :song => @cue.tracks[0].song
+      id = @cue.id
+      @cue.delete
+      assert_nil(Cuesheet.find_by_id(id))
+      assert_nil(Track.find_by_cuesheet_id(id))
+      song = Song.find_by_performer_and_title_and_remix('Essential Mix', 'Intro', nil)
+      assert_not_nil(song)
+    end
+
   end
 
 end

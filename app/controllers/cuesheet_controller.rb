@@ -38,7 +38,7 @@ class CuesheetController < ApplicationController
 
   def destroy
     cuesheet = Cuesheet.find(params[:id])
-    if cuesheet.tracks.destroy_all && cuesheet.destroy
+    if cuesheet.delete
       flash[:notice] = 'Cuesheet successfully removed!'
     else
       flash[:notice] = 'Cuesheet failed to remove.'
