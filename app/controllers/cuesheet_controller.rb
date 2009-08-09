@@ -46,4 +46,11 @@ class CuesheetController < ApplicationController
     redirect_to :action => 'index'
   end
 
+  def export
+    cue = Cuesheet.find(params[:id])
+    if cue
+      send_data(cue.to_cuesheet, {:filename => cue.cue_file})
+    end
+  end
+
 end

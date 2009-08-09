@@ -1,5 +1,7 @@
 <%= link_to "Back to index", :action => 'index' %>
 <br />
+<%= link_to "Download this cuesheet", {:action => 'export', :id => @cuesheet.id } %>
+<br />
 <%= link_to "Remove this cuesheet", @cuesheet, :method => :delete, :confirm => 'Are you sure?' %>
 <br />
 <br />
