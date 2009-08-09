@@ -67,4 +67,10 @@ class Track < ActiveRecord::Base
     cuesheet.tracks[track_num].track_diff(self)
   end
 
+  def print_length
+    return 'none' if cuesheet.tracks[track_num].nil?
+    len = cuesheet.tracks[track_num].track_diff(self)
+    "#{add_zeros(len[0])}:#{add_zeros(len[1])}"
+  end
+
 end

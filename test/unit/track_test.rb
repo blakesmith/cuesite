@@ -81,6 +81,10 @@ class TrackTest < ActiveSupport::TestCase
       assert_equal([1, 54, 60], @track1.length)
     end
 
+    should 'calc track print_length' do
+      assert_equal('01:54', @track1.print_length)
+    end
+
     should 'calc track length with nil (No following track)' do
       @track2.destroy
       assert_equal('none', @track1.length)
