@@ -87,7 +87,7 @@ class TrackTest < ActiveSupport::TestCase
 
     should 'calc track length with nil (No following track)' do
       @track2.destroy
-      assert_equal('none', @track1.length)
+      assert_equal('unknown', @track1.length)
     end
 
   end
