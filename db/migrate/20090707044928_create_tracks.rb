@@ -9,9 +9,13 @@ class CreateTracks < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :tracks, :song_id
   end
 
   def self.down
+    remove_index :tracks, :column => :song_id
+
     drop_table :tracks
   end
 end
