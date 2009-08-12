@@ -43,7 +43,8 @@ class CuesheetController < ApplicationController
     else
       flash[:notice] = 'Cuesheet failed to remove.'
     end
-    redirect_to :action => 'index'
+    list
+    render :action => 'list'
   end
 
   def export
