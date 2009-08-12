@@ -41,7 +41,7 @@ class CuesheetController < ApplicationController
     if cuesheet.delete
       flash[:notice] = 'Cuesheet successfully removed!'
     else
-      flash[:notice] = 'Cuesheet failed to remove.'
+      flash[:error] = 'Cuesheet failed to remove.'
     end
     list
     render :action => 'list'

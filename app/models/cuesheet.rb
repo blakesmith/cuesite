@@ -24,12 +24,12 @@ class Cuesheet < ActiveRecord::Base
     else
       cue_file = filename.split('/').last
     end
-    cue = Cuesheet.create(:performer => parsed[:cuesheet][:performer], :title => parsed[:cuesheet][:title], :file => parsed[:cuesheet][:file], :cue_file => cue_file)
+    cue = Cuesheet.new(:performer => parsed[:cuesheet][:performer], :title => parsed[:cuesheet][:title], :file => parsed[:cuesheet][:file], :cue_file => cue_file)
     parsed[:tracks].each do |track|
       song = Song.find_or_create_by_performer_and_title_and_remix(:performer => track[:performer], :title => track[:title], :remix => track[:remix])
       new_track = Track.create(:cuesheet => cue, :song => song, :minutes => track[:index][0], :seconds => track[:index][1], :frames => track[:index][2], :track_num => track[:track])
     end
-    cue
+    cue if cue.save
   end
 
   def self.parse_cue_file(file)
