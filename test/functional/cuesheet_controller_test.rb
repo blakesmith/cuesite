@@ -18,12 +18,12 @@ class CuesheetControllerTest < ActionController::TestCase
     assert_template 'new'
   end
 
- # should 'POST create' do
- #   f = File.open('test/fixtures/test.cue')
- #   post :create, :cue_file => f
- #   assert_response :success
- #   assert_template 'show'
- # end
+  should 'POST create' do
+    f = File.open('test/fixtures/test.cue')
+    flexstub(f).should_receive(:original_filename).and_return('test.cue')
+    post :create, :cue_file => f
+    assert_response :redirect
+  end
   
   should 'GET show' do
     cue = create_cuesheet
@@ -38,6 +38,15 @@ class CuesheetControllerTest < ActionController::TestCase
     assert_response :success
     assert_template 'list'
     assert_select 'div.success', :text => 'Cuesheet successfully removed!'
+  end
+
+  should 'GET export' do
+    stub = flexstub(@controller)
+    stub.should_receive(:send_data).times(1)
+    flexstub(@controller).should_receive(:render)
+    cue = create_cuesheet
+    get :export, :id => cue.id
+    assert_response :success
   end
 
 end
