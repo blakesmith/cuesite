@@ -13,4 +13,15 @@
 
 class Song < ActiveRecord::Base
   has_many :tracks
+
+  def parse_remix
+    re = title.scan(/\((.*)\)/).to_s
+    ti = title.scan(/(.*)\(.*\)/).to_s.chomp("\s")
+    if ! re.empty?
+      self.remix = re
+      self.title = ti
+      self.save
+    end
+  end
+
 end
