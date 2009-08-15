@@ -15,6 +15,11 @@
       <td>[<%= track.print_index %>]</td>
       <td><%= track.print_track_num %>.</td>
       <td><%= track.song.performer %> - <%= track.song.title %></td>
+      <% if track.song.remix %>
+        <td><%= track.song.remix %></td>
+      <% else %>
+        <td>None</td>
+      <% end %>
       <td>(<%= track.print_length %>)</td>
     </tr>
   <% end %>
