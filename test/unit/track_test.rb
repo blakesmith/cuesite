@@ -28,11 +28,22 @@ class TrackTest < ActiveSupport::TestCase
 
   should 'return performer, title, and index for .to_cuesheet' do
     cue = create_cuesheet
-    song = create_song(:performer => 'blithe', :title => 'resonance') 
+    song = create_song(:performer => 'blithe', :title => 'resonance', :remix => nil) 
     track = create_track(:track_num => 25, :minutes => 5, :seconds => 30, :frames => 70, :cuesheet => cue, :song => song)
     expected = "\sTRACK 25 AUDIO\n"
     expected << "\s\s\sPERFORMER \"blithe\"\n"
     expected << "\s\s\sTITLE \"resonance\"\n"
+    expected << "\s\s\sINDEX 01 05:30:70\n"
+    assert_equal(expected, track.to_cuesheet)
+  end
+
+  should 'return performer, title, remix and index for .to_cuesheet' do
+    cue = create_cuesheet
+    song = create_song(:performer => 'blithe', :title => 'resonance', :remix => 'original remix') 
+    track = create_track(:track_num => 25, :minutes => 5, :seconds => 30, :frames => 70, :cuesheet => cue, :song => song)
+    expected = "\sTRACK 25 AUDIO\n"
+    expected << "\s\s\sPERFORMER \"blithe\"\n"
+    expected << "\s\s\sTITLE \"resonance (original remix)\"\n"
     expected << "\s\s\sINDEX 01 05:30:70\n"
     assert_equal(expected, track.to_cuesheet)
   end

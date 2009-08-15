@@ -119,7 +119,7 @@ FILE "Essential Mix - 2008-10-25 - Steve Mac.mp3" MP3
    INDEX 01 96:23:29
  TRACK 30 AUDIO
    PERFORMER "Luca And Paul"
-   TITLE "Dinamicro (Gregor Tresher Remix )"
+   TITLE "Dinamicro (Gregor Tresher Remix)"
    INDEX 01 101:28:08
  TRACK 31 AUDIO
    PERFORMER "Steve Mac"

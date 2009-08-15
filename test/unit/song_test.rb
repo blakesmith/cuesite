@@ -30,4 +30,14 @@ class SongTest < ActiveSupport::TestCase
     assert_equal('song that rocks', song.title)
   end
 
+  should 'print remix' do
+    song = create_song :remix => 'original remix'
+    assert_equal(' (original remix)', song.print_remix)
+  end
+
+  should 'not print remix if remix is nil' do
+    song = create_song :remix => nil
+    assert_equal('', song.print_remix)
+  end
+
 end

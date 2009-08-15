@@ -47,7 +47,7 @@ class Track < ActiveRecord::Base
   def to_cuesheet
     cue = "\sTRACK #{add_zeros(track_num)} AUDIO\n"
     cue << "\s\s\sPERFORMER \"#{song.performer}\"\n"
-    cue << "\s\s\sTITLE \"#{song.title}\"\n"
+    cue << "\s\s\sTITLE \"#{song.title}#{song.print_remix}\"\n"
     cue << "\s\s\sINDEX 01 #{add_zeros(minutes)}:#{add_zeros(seconds)}:#{add_zeros(frames)}\n"
   end
 

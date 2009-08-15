@@ -15,10 +15,10 @@ class Song < ActiveRecord::Base
   has_many :tracks
 
   def parse_remix
-    re = title.scan(/\((.*)\)/).to_s
+    re = title.scan(/\((.*)\)/).to_s.chomp("\s")
     ti = title.scan(/(.*)\(.*\)/).to_s.chomp("\s")
     if re.empty?
-      re = title.scan(/\[(.*)\]/).to_s
+      re = title.scan(/\[(.*)\]/).to_s.chomp("\s")
       ti = title.scan(/(.*)\[.*\]/).to_s.chomp("\s")
     end
     if ! re.empty?
@@ -26,6 +26,11 @@ class Song < ActiveRecord::Base
       self.title = ti
       self.save
     end
+  end
+
+  def print_remix
+    return '' if remix.nil?
+    " (#{remix})"
   end
 
 end

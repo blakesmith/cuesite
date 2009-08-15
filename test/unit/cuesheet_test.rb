@@ -55,7 +55,9 @@ class CuesheetTest < ActiveSupport::TestCase
     assert_equal('Intro', @cuesheet.tracks[0].song.title)
     assert_equal(1, @cuesheet.tracks[0].track_num)
     assert_equal('Surkin', @cuesheet.tracks[34].song.performer)
-    assert_equal('White Knight Two (Mac Re Edit)', @cuesheet.tracks[34].song.title)
+    assert_equal('White Knight Two', @cuesheet.tracks[34].song.title)
+    assert_equal('Luciano Mix / Mac Re Edit', @cuesheet.tracks[2].song.remix)
+    assert_equal('Thrist', @cuesheet.tracks[2].song.title)
     assert_equal(0, @cuesheet.tracks[0].minutes)
   end
 
