@@ -1,4 +1,4 @@
-class CuesheetController < ApplicationController
+class CuesheetsController < ApplicationController
 
   def index
     list

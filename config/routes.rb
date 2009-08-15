@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.root :controller => 'cuesheet', :action => 'index'
-  map.resources :cuesheet
+  map.root :controller => 'cuesheets', :action => 'index'
+  map.resources :cuesheets
   map.resources :track
   map.resources :song
 
