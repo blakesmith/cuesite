@@ -40,22 +40,41 @@ class SongTest < ActiveSupport::TestCase
     assert_equal('', song.print_remix)
   end
 
+  should 'track_instances' do
+    song = create_song
+    track = create_track :song => song
+    track2 = create_track :song => song
+    assert_same_elements([track, track2], song.track_instances)
+  end
+
   should 'track_count' do
     song = create_song
     track = create_track :song => song
-    track = create_track :song => song
+    track2 = create_track :song => song
     assert_equal(2, song.track_count)
   end
 
   should 'remix_count, no remix' do
     song = create_song :remix => nil
-    assert_equal(1, song.remix_count)
+    assert_equal(0, song.remix_count)
   end
 
   should 'remix_count, 1 remix' do
     song = create_song :remix => nil
     song2 = create_song :remix => 'House Mix'
-    assert_equal(2, song.remix_count)
+    assert_equal(1, song.remix_count)
+  end
+
+  should 'all_remixes, no remix' do
+    song = create_song :remix => nil
+    assert_equal([], song.all_remixes)
+  end
+
+  should 'all_remixes, 2 remix' do
+    song = create_song :remix => nil
+    song2 = create_song :remix => 'House Mix'
+    song3 = create_song :remix => 'Original Mix'
+    assert_same_elements(['House Mix', 'Original Mix'], song.all_remixes)
   end
 
 end
