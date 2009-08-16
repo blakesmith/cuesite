@@ -33,14 +33,6 @@ class Song < ActiveRecord::Base
     " (#{remix})"
   end
 
-  def track_instances
-    Track.all(:conditions => {:song_id => self.id})
-  end
-
-  def track_count
-    track_instances.size
-  end
-
   def all_remixes
     songs = Song.all(:conditions => {:performer => performer, :title => title})
     songs.each_with_index do |song, i|
@@ -50,7 +42,7 @@ class Song < ActiveRecord::Base
   end
 
   def remix_count
-    all_remixes.size
+    all_remixes.count
   end
 
 end
