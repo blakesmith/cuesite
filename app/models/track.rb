@@ -32,7 +32,6 @@ class Track < ActiveRecord::Base
   end
 
   def print_index
-    i = index
     "#{add_zeros(index[0])}:#{add_zeros(index[1])}"
   end
 
