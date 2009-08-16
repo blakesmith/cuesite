@@ -11,7 +11,7 @@ class SongsControllerTest < ActionController::TestCase
 
   should 'PUT update' do
     song = create_song
-    xhr :put, :update, :id => song.id
+    xhr :put, :update, :id => song.id, :song => song
     assert_response :success
     assert_select_rjs :hide, "edit_song_#{song.id}"
     assert_select_rjs :show, "display_song_#{song.id}"
