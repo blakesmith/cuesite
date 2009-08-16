@@ -17,11 +17,13 @@
     <tr>
       <td>[<%= track.print_index %>]</td>
       <td><%= track.print_track_num %>.</td>
-      <td><%= link_to "#{track.song.performer} - #{track.song.title}", song_path(track.song) %></td>
-      <% form_remote_for(track.song) do |f| %>
-        <%= f.text_field :performer %>
-        <%= f.text_field :title %>
-        <%= submit_tag 'Save' %>
+      <td id="display_<%= dom_id(track.song) %>"><%= link_to "#{track.song.performer} - #{track.song.title}", song_path(track.song) %>
+        (<%= link_to_function "Edit", "$('edit_#{dom_id(track.song)}').show();$('display_#{dom_id(track.song)}').hide();" %>)
+      </td>
+      <td id="edit_<%= dom_id(track.song) %>" style='display:none;'><% form_remote_for track.song do |f| %>
+          <%= f.text_field :performer, :size => 15 %>
+          <%= f.text_field :title, :size => 15 %>
+        <%= submit_tag 'Save' %></td>
       <% end %>
       <% if track.song.remix %>
         <td><%= track.song.remix %></td>
