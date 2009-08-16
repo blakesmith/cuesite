@@ -21,11 +21,11 @@ class CuesheetsController < ApplicationController
         flash[:notice] = 'Cuesheet successfully uploaded!'
         redirect_to :action => :show, :id => cue.id
       else
-        flash[:error] = 'Cuesheet failed to upload'
+        flash.now[:error] = 'Cuesheet failed to upload'
         render :action => :new
       end
     else
-      flash[:error] = 'You didn\'t select a cuesheet to upload'
+      flash.now[:error] = 'You didn\'t select a cuesheet to upload'
       render :action => :new
     end
   end
@@ -39,9 +39,9 @@ class CuesheetsController < ApplicationController
   def destroy
     cuesheet = Cuesheet.find(params[:id])
     if cuesheet.delete
-      flash[:notice] = 'Cuesheet successfully removed!'
+      flash.now[:notice] = 'Cuesheet successfully removed!'
     else
-      flash[:error] = 'Cuesheet failed to remove.'
+      flash.now[:error] = 'Cuesheet failed to remove.'
     end
     list
     render :action => 'list'
