@@ -10,6 +10,7 @@ Rails::Initializer.run do |config|
   config.gem 'thoughtbot-shoulda', :lib => 'shoulda', :source => 'http://gems.github.com'
   config.gem 'flexmock', :lib => 'flexmock', :source => 'http://gems.github.com'
   config.gem 'less'
+
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
@@ -42,3 +43,8 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
+
+if "irb" == $0
+    ActiveRecord::Base.logger = Logger.new(STDOUT)
+end
+
