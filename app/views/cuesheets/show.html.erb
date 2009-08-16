@@ -14,7 +14,7 @@
     <tr>
       <td>[<%= track.print_index %>]</td>
       <td><%= track.print_track_num %>.</td>
-      <td><%= track.song.performer %> - <%= track.song.title %></td>
+      <td><%= link_to "#{track.song.performer} - #{track.song.title}", song_path(track.song) %></td>
       <% if track.song.remix %>
         <td><%= track.song.remix %></td>
       <% else %>
