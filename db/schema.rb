@@ -43,4 +43,6 @@ ActiveRecord::Schema.define(:version => 20090803065620) do
     t.integer  "track_num"
   end
 
+  add_index "tracks", ["song_id"], :name => "index_tracks_on_song_id"
+
 end

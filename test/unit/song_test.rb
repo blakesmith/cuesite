@@ -40,6 +40,22 @@ class SongTest < ActiveSupport::TestCase
     assert_equal('', song.print_remix)
   end
 
+  should 'named_scope has_remix' do
+    song = create_song :remix => 'Original Mix'
+    song2 = create_song :remix => nil
+    all = Song.has_remix
+    assert all.include?(song)
+    assert ! all.include?(song2)
+  end
+
+  should 'named_scope no_remix' do
+    song = create_song :remix => 'Original Mix'
+    song2 = create_song :remix => nil
+    all = Song.no_remix
+    assert ! all.include?(song)
+    assert all.include?(song2)
+  end
+
   should 'remix_count, no remix' do
     song = create_song :remix => nil
     assert_equal(0, song.remix_count)

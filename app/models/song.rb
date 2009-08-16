@@ -12,6 +12,8 @@
 #
 
 class Song < ActiveRecord::Base
+  named_scope :has_remix, :conditions => ['remix IS NOT ?', nil]
+  named_scope :no_remix, :conditions => ['remix IS ?', nil]
   has_many :tracks
 
   def parse_remix
@@ -34,11 +36,7 @@ class Song < ActiveRecord::Base
   end
 
   def all_remixes
-    songs = Song.all(:conditions => {:performer => performer, :title => title})
-    songs.each_with_index do |song, i|
-      songs.delete_at(i) if song.remix.nil?
-    end
-    songs
+    songs = Song.has_remix.all(:conditions => { :performer => performer, :title => title })
   end
 
   def remix_count
