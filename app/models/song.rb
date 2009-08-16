@@ -42,11 +42,11 @@ class Song < ActiveRecord::Base
   end
 
   def all_remixes
-    remixes = Song.all(:conditions => {:performer => performer, :title => title}).map(&:remix)
-    remixes.each_with_index do |remix, i|
-      remixes.delete_at(i) if remix.nil?
+    songs = Song.all(:conditions => {:performer => performer, :title => title})
+    songs.each_with_index do |song, i|
+      songs.delete_at(i) if song.remix.nil?
     end
-    remixes
+    songs
   end
 
   def remix_count

@@ -74,7 +74,7 @@ class SongTest < ActiveSupport::TestCase
     song = create_song :remix => nil
     song2 = create_song :remix => 'House Mix'
     song3 = create_song :remix => 'Original Mix'
-    assert_same_elements(['House Mix', 'Original Mix'], song.all_remixes)
+    assert_same_elements([song2, song3], song.all_remixes)
   end
 
 end
