@@ -68,7 +68,10 @@ class CuesheetsControllerTest < ActionController::TestCase
     stub = flexstub(@controller)
     stub.should_receive(:send_data, :render).times(1)
     cue = create_cuesheet
+    download_count = cue.download_count
     get :export, :id => cue.id
+    cue.reload
+    assert_equal(download_count + 1, cue.download_count)
     assert_response :success
   end
 

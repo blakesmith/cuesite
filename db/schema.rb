@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20090803065620) do
     t.string   "performer"
     t.string   "title"
     t.string   "file"
+    t.integer  "download_count", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cue_file"

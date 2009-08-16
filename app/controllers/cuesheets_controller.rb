@@ -51,6 +51,8 @@ class CuesheetsController < ApplicationController
     cue = Cuesheet.find(params[:id])
     if cue
       send_data(cue.to_cuesheet, {:filename => cue.cue_file})
+      cue.download_count += 1
+      cue.save
     end
   end
 

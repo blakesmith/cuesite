@@ -4,6 +4,7 @@ class CreateCuesheets < ActiveRecord::Migration
       t.string :performer
       t.string :title
       t.string :file
+      t.integer :download_count, :default => 0
 
       t.timestamps
     end
