@@ -7,6 +7,9 @@
   <%= link_to "Remove this cuesheet", @cuesheet, :method => :delete, :confirm => 'Are you sure?' %>
   <br />
   <br />
+  Download count: <%= @cuesheet.download_count %>
+  <br />
+  <br />
   Tracklist:
   <br />
   <table id="tracklist">
