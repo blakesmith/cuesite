@@ -33,4 +33,12 @@ class Song < ActiveRecord::Base
     " (#{remix})"
   end
 
+  def track_count
+    Track.all(:conditions => {:song_id => self.id}).size
+  end
+
+  def remix_count
+    Song.all(:conditions => {:performer => performer, :title => title}).size
+  end
+
 end

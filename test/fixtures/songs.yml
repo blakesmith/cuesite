@@ -14,11 +14,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  performer: Essential Mix
-  title: Intro
+  performer: Paul Oakenfold
+  title: Gamemaster
   remix: MyString
 
 two:
-  performer: Marc Houle
-  title: Meatier Shower
+  performer: Paul Van Dyk
+  title: Words
   remix: MyString
