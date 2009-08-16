@@ -32,7 +32,7 @@ class CuesheetsController < ApplicationController
 
   def show
     if params[:id]
-      @cuesheet = Cuesheet.find(params[:id])
+      @cuesheet = Cuesheet.find(params[:id], :include => {:tracks => :song})
     end
   end
 
