@@ -1,0 +1,19 @@
+    <tr id="<%= dom_id(@track.song) %>">
+      <td>[<%= @track.print_index %>]</td>
+      <td><%= @track.print_track_num %>.</td>
+      <td>(<%= link_to_function "Edit", "$('edit_#{dom_id(@track.song)}').show();$('display_#{dom_id(@track.song)}').hide();" %>)</td>
+      <td id="display_<%= dom_id(@track.song) %>"><%= link_to "#{@track.song.performer} - #{@track.song.title}", song_path(@track.song) %>
+      </td>
+      <td id="edit_<%= dom_id(@track.song) %>" style='display:none;'><% form_remote_for @track.song do |f| %>
+          <%= f.text_field :performer, :size => 13 %>
+          <%= f.text_field :title, :size => 13 %>
+          <%= hidden_field_tag :track, @track.id %>
+        <%= submit_tag 'Save' %></td>
+      <% end %>
+      <% if @track.song.remix %>
+        <td><%= @track.song.remix %></td>
+      <% else %>
+        <td>None</td>
+      <% end %>
+      <td>(<%= @track.print_length %>)</td>
+    </tr>
