@@ -12,5 +12,13 @@
       <br />
     <% end %>
   </div>
+  <br />
+  <div id="other_remixes">
+    <h3>Remixes of this song (<%= @remixes.count %>)</h3>
+    <% @remixes.each do |song| %>
+      <%= link_to "#{song.performer} - #{song.title} (#{song.remix})", song_path(song) %>
+      <br />
+    <% end %>
+  </div>
 
 </fieldset>
