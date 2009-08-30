@@ -41,4 +41,8 @@ class Song < ActiveRecord::Base
     all_remixes.count
   end
 
+  def all_cuesheets
+    tracks.collect(&:cuesheet)
+  end
+
 end

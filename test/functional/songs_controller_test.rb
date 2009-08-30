@@ -9,6 +9,7 @@ class SongsControllerTest < ActionController::TestCase
     assert_template 'show'
     assert assigns(:song)
     assert assigns(:remixes)
+    assert assigns(:cuesheets)
   end
 
   should 'PUT update' do

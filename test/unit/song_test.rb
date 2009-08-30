@@ -79,4 +79,15 @@ class SongTest < ActiveSupport::TestCase
     assert_same_elements([song2, song3], song.all_remixes)
   end
 
+  should 'all_cuesheets' do
+    cuesheet = create_cuesheet
+    cuesheet2 = create_cuesheet
+    song = create_song 
+    track = create_track :song => song, :cuesheet => cuesheet
+    track2 = create_track :song => song, :cuesheet => cuesheet2
+    cues = song.all_cuesheets
+
+    assert_same_elements [cuesheet, cuesheet2], cues
+  end
+
 end

@@ -1,3 +1,11 @@
 <fieldset>
   <legend><%= @song.performer %> - <%= @song.title %><%= @song.print_remix %></legend>
+  <div id="other_cuesheets">
+    <h3>Cuesheets with this song</h3>
+    <% @cuesheets.each do |cuesheet| %>
+      <%= "#{cuesheet.performer} - #{cuesheet.title}" %>
+      <br />
+    <% end %>
+  </div>
+
 </fieldset>
