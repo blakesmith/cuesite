@@ -2,6 +2,7 @@ class SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
+    @remixes = @song.all_remixes
   end
 
   def update

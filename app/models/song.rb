@@ -23,10 +23,8 @@ class Song < ActiveRecord::Base
       re = title.scan(/\[(.*)\]/).to_s.chomp("\s")
       ti = title.scan(/(.*)\[.*\]/).to_s.chomp("\s")
     end
-    if ! re.empty?
-      self.remix = re
-      self.title = ti
-      self.save
+    unless re.empty?
+      self.update_attributes(:remix => re, :title => ti)
     end
   end
 

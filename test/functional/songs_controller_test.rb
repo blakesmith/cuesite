@@ -7,6 +7,8 @@ class SongsControllerTest < ActionController::TestCase
     get :show, :id => song.id
     assert_response :success
     assert_template 'show'
+    assert assigns(:song)
+    assert assigns(:remixes)
   end
 
   should 'PUT update' do
