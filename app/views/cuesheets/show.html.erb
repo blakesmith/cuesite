@@ -15,7 +15,7 @@
   <table id="tracklist">
   <% @cuesheet.tracks.each do |track| %>
     <% @track = track %>
-    <%= render :partial => 'song_row', :locals => { :track => @track } %>
+    <%= render :partial => 'song_row', :locals => { :track => @track, :cuesheet => @cuesheet } %>
   <% end %>
   </table>
 </fieldset>

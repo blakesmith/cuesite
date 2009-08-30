@@ -1,9 +1,14 @@
 <fieldset>
   <legend><%= @song.performer %> - <%= @song.title %><%= @song.print_remix %></legend>
+  <% if @cuesheet %>
+    <%= link_to "Back to #{@cuesheet.performer} - #{@cuesheet.title}", cuesheet_path(@cuesheet) %>
+    <br />
+    <br />
+  <% end %>
   <div id="other_cuesheets">
-    <h3>Cuesheets with this song</h3>
+    <h3>Cuesheets with this song (<%= @cuesheets.count %>)</h3>
     <% @cuesheets.each do |cuesheet| %>
-      <%= "#{cuesheet.performer} - #{cuesheet.title}" %>
+      <%= link_to "#{cuesheet.performer} - #{cuesheet.title}", cuesheet_path(cuesheet) %>
       <br />
     <% end %>
   </div>

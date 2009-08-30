@@ -4,6 +4,10 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
     @remixes = @song.all_remixes
     @cuesheets = @song.all_cuesheets
+    if params[:from]
+      @cuesheet = Cuesheet.find params[:from]
+    end
+
   end
 
   def update
