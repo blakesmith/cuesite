@@ -6,7 +6,7 @@
     <br />
   <% end %>
   <div id="other_cuesheets">
-    <h3>Cuesheets with this song (<%= @cuesheets.count %>)</h3>
+    <h3>Cuesheets with this song (<%= @cuesheets.size %>)</h3>
     <% @cuesheets.each do |cuesheet| %>
       <%= link_to "#{cuesheet.performer} - #{cuesheet.title}", cuesheet_path(cuesheet) %>
       <br />
@@ -14,7 +14,7 @@
   </div>
   <br />
   <div id="other_remixes">
-    <h3>Remixes of this song (<%= @remixes.count %>)</h3>
+    <h3>Remixes of this song (<%= @remixes.size %>)</h3>
     <% @remixes.each do |song| %>
       <%= link_to "#{song.performer} - #{song.title} (#{song.remix})", song_path(song) %>
       <br />
