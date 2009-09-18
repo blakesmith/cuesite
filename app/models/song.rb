@@ -23,6 +23,7 @@ class Song < ActiveRecord::Base
       re = title.scan(/\[(.*?)\]/).join ", "
       ti = title.gsub(/\[(.*?)\]/, '').chomp("\s")
     end
+    ti = ti.gsub /\s\s/, "\s" # strip duplicate spaces
     unless re.empty?
       self.update_attributes(:remix => re, :title => ti)
     end
