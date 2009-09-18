@@ -30,6 +30,20 @@ class SongTest < ActiveSupport::TestCase
     assert_equal('song that rocks', song.title)
   end
 
+  should 'parse_remix strip all parens' do
+    song = create_song :title => 'song that rocks (original remix)(blake edit)', :remix => nil
+    song.parse_remix
+    assert_equal('original remix, blake edit', song.remix)
+    assert_equal('song that rocks', song.title)
+  end
+
+  should 'parse_remix strip all parens not together' do
+    song = create_song :title => 'song that (original remix) rocks (blake edit)', :remix => nil
+    song.parse_remix
+    assert_equal('original remix, blake edit', song.remix)
+    assert_equal('song that rocks', song.title)
+  end
+
   should 'print remix' do
     song = create_song :remix => 'original remix'
     assert_equal(' (original remix)', song.print_remix)

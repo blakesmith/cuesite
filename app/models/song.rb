@@ -17,11 +17,11 @@ class Song < ActiveRecord::Base
   has_many :tracks
 
   def parse_remix
-    re = title.scan(/\((.*)\)/).to_s.chomp("\s")
-    ti = title.scan(/(.*)\(.*\)/).to_s.chomp("\s")
+    re = title.scan(/\((.*?)\)/).join ", "
+    ti = title.gsub(/\((.*?)\)/, '').chomp("\s")
     if re.empty?
-      re = title.scan(/\[(.*)\]/).to_s.chomp("\s")
-      ti = title.scan(/(.*)\[.*\]/).to_s.chomp("\s")
+      re = title.scan(/\[(.*?)\]/).join ", "
+      ti = title.gsub(/\[(.*?)\]/, '').chomp("\s")
     end
     unless re.empty?
       self.update_attributes(:remix => re, :title => ti)
