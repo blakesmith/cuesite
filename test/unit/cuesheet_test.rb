@@ -70,6 +70,12 @@ class CuesheetTest < ActiveSupport::TestCase
     assert_equal(@cuesheet.cue_file, 'test.cue')
   end
 
+  should 'load accented, convert to UTF-8' do
+    Cuesheet.load_from_file('test/fixtures/accented.cue')
+    cuesheet = Cuesheet.find_by_cue_file('accented.cue')
+    assert_equal 'Trentemøller', cuesheet.performer
+  end
+
   context 'cuesheet from file' do
 
     setup do

@@ -12,6 +12,8 @@
 #  cue_file   :string(255)
 #
 
+require 'iconv'
+
 class Cuesheet < ActiveRecord::Base
   has_many :tracks
 
@@ -39,6 +41,9 @@ class Cuesheet < ActiveRecord::Base
     elsif file.is_a?(String)
       f = file # The string for the file was passed in instead of the filename
     end
+
+    c = Iconv.new 'UTF-8', 'ISO-8859-1'
+    f = c.iconv(f)
 
     performers = f.scan(/PERFORMER \"(.*)\"/).collect {|performer| performer[0]}
     cue_performer = performers[0]
