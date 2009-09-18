@@ -43,7 +43,7 @@ class Song < ActiveRecord::Base
   end
 
   def all_cuesheets
-    tracks.collect(&:cuesheet)
+    Cuesheet.all(:joins => :tracks, :conditions => {:tracks => {:song_id =>  self.id } } )
   end
 
 end
