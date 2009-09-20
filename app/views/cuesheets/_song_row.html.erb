@@ -8,8 +8,9 @@
           <%= f.text_field :performer, :size => 13 %>
           <%= f.text_field :title, :size => 13 %>
           <%= hidden_field_tag :track, @track.id %>
-        <%= submit_tag 'Save' %></td>
+        <%= submit_tag 'Save' %>
       <% end %>
+      </td>
       <% if @track.song.remix %>
         <td><%= @track.song.remix %></td>
       <% else %>

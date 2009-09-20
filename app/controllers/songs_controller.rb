@@ -19,8 +19,6 @@ class SongsController < ApplicationController
           @track.update_attributes(:song_id => @song.id)
           if @song.save
             page.replace "song_#{params[:id]}", :partial => 'cuesheets/song_row', :object => @track
-            page.hide "edit_song_#{params[:id]}"
-            page.show "display_song_#{params[:id]}"
           end
         end
       end

@@ -20,8 +20,7 @@ class SongsControllerTest < ActionController::TestCase
     cuesheet = create_cuesheet
     xhr :put, :update, :id => song.id, :song => song, :track => track.id, :from => cuesheet.id
     assert_response :success
-    assert_select_rjs :hide, "edit_song_#{song.id}"
-    assert_select_rjs :show, "display_song_#{song.id}"
+    assert_select_rjs :replace, "song_#{song.id}"
   end
 
   should 'PUT update new song' do
