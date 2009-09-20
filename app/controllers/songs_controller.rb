@@ -14,10 +14,9 @@ class SongsController < ApplicationController
     respond_to do |format|
       format.js do
         render :update do |page|
-          @song = Song.find(params[:id])
-          @song.performer = params[:song][:performer]
-          @song.title = params[:song][:title]
+          @song = Song.find_or_create_by_performer_and_title(params[:song][:performer], params[:song][:title])
           @track = Track.find(params[:track])
+          @track.update_attributes(:song_id => @song.id)
           if @song.save
             page.replace "song_#{params[:id]}", :partial => 'cuesheets/song_row', :object => @track
             page.hide "edit_song_#{params[:id]}"
